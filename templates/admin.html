@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>📋 工单记录（tickets）</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>用户</th>
+      <th>内容</th>
+      <th>时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in tickets %}
+    <tr>
+      <td>{{ t.id }}</td>
+      <td>{{ t.username }}</td>
+      <td>{{ t.text }}</td>
+      <td>{{ t.time }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>🔍 分类记录（classify_log）</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>工单ID</th>
+      <th>分类标签</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in classify_logs %}
+    <tr>
+      <td>{{ c.ticket_id }}</td>
+      <td>{{ c.label }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>💬 情感记录（sentiment_log）</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>工单ID</th>
+      <th>情感</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in sentiment_logs %}
+    <tr>
+      <td>{{ s.ticket_id }}</td>
+      <td>{{ s.sentiment }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>🤖 回复记录（reply_log）</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>工单ID</th>
+      <th>回复内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in reply_logs %}
+    <tr>
+      <td>{{ r.ticket_id }}</td>
+      <td>{{ r.reply_text }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

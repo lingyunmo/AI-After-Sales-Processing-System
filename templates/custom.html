@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>工单查询</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 按工单编号查询</h1>
+    <form method="POST" action="/custom/query">
+      <input type="text" name="ticket_id" placeholder="请输入工单编号..." required />
+      <button type="submit">查询</button>
+    </form>
+    {% if result %}
+    <div class="result-card">
+      <p><strong>工单编号：</strong>{{ result.id }}</p>
+      <p><strong>提交时间：</strong>{{ result.time }}</p>
+      <p><strong>问题内容：</strong>{{ result.text }}</p>
+      <p><strong>分类结果：</strong>{{ result.label }}</p>
+      <p><strong>情绪判断：</strong>{{ result.sentiment }}</p>
+      <p><strong>系统回复：</strong>{{ result.reply_text }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>

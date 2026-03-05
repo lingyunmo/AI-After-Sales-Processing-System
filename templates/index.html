@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>🧠 智能售后客服系统</h1>
+<form method="POST" action="{{ url_for('submit') }}" onsubmit="showLoading()">
+  <input type="text" name="user_input" placeholder="请输入售后问题..." required />
+  <button type="submit">提交</button>
+</form>
+
+<div id="loading" class="loader" style="display: none;"></div>
+
+{% if result %}
+<div class="result-card">
+  <p><strong>📥 用户输入：</strong>{{ result.text }}</p>
+  <p><strong>🧾 工单分类：</strong>{{ result.category }}</p>
+  <p><strong>💬 情绪判断：</strong>{{ result.sentiment }}</p>
+  <p><strong>🤖 智能回复：</strong>{{ result.reply }}</p>
+</div>
+{% endif %}
+{% endblock %}
